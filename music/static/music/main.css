@@ -43,6 +43,25 @@ body{
     padding: 10px;
 }
 
+.four_wrapper{
+    padding: 10px ;
+    width:80%;
+    margin:auto;
+    text-align: center;
+    color: aliceblue;
+   font-weight: bold;
+   font-style: italic;
+   text-transform: capitalize;
+
+}
+.four_wrapper img{
+    height:560px ;
+    width:100%;
+
+
+}
+
+
 
 ::placeholder {
     color:cadetblue;
