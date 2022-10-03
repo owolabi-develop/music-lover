@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Lover</title>
+    <link rel="stylesheet" href=" {% static 'music/main.css' %}">
+    <script src="{% static 'music/main.js' %}"></script>
+</head>
+<body>
+<!--end of search-container-->
+<div class="search-container">
+    <h2><a href="{% url 'musiclovers:Base-music' %}" style="text-decoration:none ; color:cadetblue;">Music Lovers</a></h2>
+    <br>
+    <form action="{% url 'musiclovers:music-search' %}" method="get">
+    <input type="search" name="musicQuery" placeholder="Search for music that you love" required> <input type="submit" value="Search">
+</form>
+</div>
+<!--end of search-container-->
+<div class="search-result">
+    <div class="search-ablum">
+        {% if artists_data %}
+        {% for image in artists_data.images|slice:"1" %}
+        <img src="{{image.url}}" alt="" srcset="">
+        {% endfor %}
+        <br/>
+        <br/>
+        <h2>{{artists_data.name}}</h2>
+        {% endif %}
+        <p>Artist</p>
+    </div>
+
+    <div class="search-playlist">
+        {% if track %}
+        {% for tracks in track  %}
+        <a href ="{{tracks.preview_url}}">
+       <div class="playlist-music">
+        {% for image in tracks.album.images|slice:"1" %}
+        <div class="playlist-image"><img src="{{image.url}}" alt="" srcset="" width="50"></div>
+       {% endfor %}
+       <div class="playlist-text"><p style="font-weight: bold;">{{tracks.name}}</p>
+        <br>
+        {% for name in tracks.artists %}
+        <span>{{name.name}}</span>
+        {% endfor %}
+    </div>
+       </div>
+    </a>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
