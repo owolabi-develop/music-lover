@@ -29,7 +29,7 @@ CLIENT_SECRET = env('CLIENT_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://lover-for-music.herokuapp.com']
+ALLOWED_HOSTS = ['lover-for-music.herokuapp.com']
 
 
 # Application definition
