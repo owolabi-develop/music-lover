@@ -25,11 +25,12 @@ def music_search(request):
         artists = results['artists']['items'][0]
         uri = artists['uri']
         artists_tracks = sp.artist_top_tracks(artist_id=uri)
-        artists_album = sp.artist_albums(artist_id=uri)
+        artists_album = sp.artist_albums(artist_id=uri,album_type='single',limit=5)
         artists_data = sp.artist(artist_id=uri)
+        print(artists_album['items'])
     else:
         return render(request,'music/search.html',{'track':'','artists_data':''})
       
 
 
-    return render(request,'music/search.html',{'track':artists_tracks['tracks'][:5],'artists_data':artists_data})
+    return render(request,'music/search.html',{'track':artists_tracks['tracks'][:5],'artists_data':artists_data,'album':artists_album['items']})

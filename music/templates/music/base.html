@@ -24,7 +24,7 @@
     {% for playlist in article %}
     <div class="playlist_container">
         <a href="{{playlist.external_urls.spotify}}">
-        {% for image in playlist.images  %}
+        {% for image in playlist.images|slice:"1"  %}
        
       <img src="{{image.url}}">
       

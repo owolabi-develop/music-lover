@@ -38,10 +38,10 @@
         <a href ="{{tracks.preview_url}}">
        <div class="playlist-music">
         {% for image in tracks.album.images|slice:"1" %}
-        <div class="playlist-image"><img src="{{image.url}}" alt="" srcset="" width="50"></div>
+        <div class="playlist-image"><img src="{{image.url}}" alt="" srcset="" width="40"></div>
        {% endfor %}
        <div class="playlist-text"><p style="font-weight: bold;">{{tracks.name}}</p>
-        <br>
+
         {% for name in tracks.artists %}
         <span>{{name.name}}</span>
         {% endfor %}
@@ -52,6 +52,49 @@
         {% endif %}
     </div>
 </div>
+<div class="rate"><h1><b>Albums</b></h1></div>
+<div class="music-container">
+    {% for albums in album %}
+    <div class="playlist_container">
+        <a href="{{albums.external_urls.spotify}}">
+        {% for image in albums.images|slice:"1"  %}
+       
+      <img src="{{image.url}}">
+      
+      <br/>
+      {% endfor %}
+      <p style="font-weight: bold;">{{albums.name}}</p>
+      <br/>
+      <p>{{playlist.description|truncatechars:"30"}}</p>
+      <a/>
+    </div>
+   
+    {% endfor %}
 
+</div>
+
+
+<div class="rate"><h1><b>Playlists</b></h1></div>
+<div class="music-container">
+    {% for tracks in track %}
+    <div class="playlist_container">
+        <a href="{{tracks.external_urls.spotify}}">
+        {% for image in tracks.album.images|slice:"1"  %}
+       
+      <img src="{{image.url}}">
+      
+      <br/>
+      {% endfor %}
+      <p style="font-weight: bold;">{{tracks.name}}</p>
+      <br/>
+      {% for name in tracks.artists %}
+        <span>{{name.name}}</span>
+        {% endfor %}
+      <a/>
+    </div>
+   
+    {% endfor %}
+
+</div>
 </body>
 </html>
