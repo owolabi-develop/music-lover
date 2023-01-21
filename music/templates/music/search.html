@@ -35,7 +35,10 @@
     <div class="search-playlist">
         {% if track %}
         {% for tracks in track  %}
+        {% if tracks.preview_url is not None %}
         <a href ="{{tracks.preview_url}}">
+            {% else %}
+            {% endif %}
        <div class="playlist-music">
         {% for image in tracks.album.images|slice:"1" %}
         <div class="playlist-image"><img src="{{image.url}}" alt="" srcset="" width="40"></div>
